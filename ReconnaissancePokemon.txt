@@ -1,3 +1,0 @@
-Objectif, regarder un episode de la saison 1 de pokemon et detecter tous les pokémons
-
-Premiere étape reconnaissance de pikachu ou pas pikachu.
