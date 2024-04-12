@@ -1,0 +1,45 @@
+J'aimerai faire un réseau de neurone from scratch.
+Pour le moment un réseau assez simpliste.
+
+TODO
+
+Détailler le type de réseau de neurone
+
+    Perceptron simple : Il s'agit d'un réseau de neurones à une seule couche sans aucune fonction d'activation. C'est le modèle le plus élémentaire, mais cela vous donnera une bonne compréhension de la façon dont les entrées sont pondérées et sommées pour produire une sortie.
+
+    Réseau de neurones à une seule couche (avec fonction d'activation) : Ajoutez une fonction d'activation (comme la fonction sigmoïde ou la fonction ReLU) à votre perceptron simple pour créer un réseau de neurones à une seule couche. Cela vous permettra de comprendre l'importance des fonctions d'activation dans la modélisation de la non-linéarité.
+
+    Réseau de neurones à plusieurs couches (MLP) : Une fois que vous êtes à l'aise avec les réseaux de neurones à une seule couche, vous pouvez passer à un réseau de neurones à plusieurs couches (MLP). Cela implique l'ajout de plusieurs couches cachées entre la couche d'entrée et la couche de sortie, ce qui permet au réseau de capturer des modèles plus complexes.
+
+    Réseau de neurones convolutif (CNN) : Les réseaux de neurones convolutifs sont particulièrement efficaces pour le traitement des données spatiales telles que les images. Implémenter un CNN simple vous permettra de comprendre comment les opérations de convolution et de pooling fonctionnent pour extraire des caractéristiques des données d'entrée.
+
+    Réseau de neurones récurrent (RNN) : Les réseaux de neurones récurrents sont conçus pour travailler avec des données séquentielles, comme des séquences de mots dans un texte ou des séquences temporelles. En implémentant un RNN simple, vous comprendrez comment les réseaux de neurones peuvent prendre en compte la séquence des données en entrée.
+
+
+
+Détailler les données sur lequel il va etre utilisé
+
+Pour commencer ca va etre des tableaux de nombres. 
+
+
+Comment je vois l'organisation de mon code.
+
+Classe neuron 
+
+
+
+Classe Network
+je pense qu'un std::vector<std::vector<neuron>> ca peut le faire, genre pour chaque layer.
+
+-Voir pour les fonctions entre les neuronnes et les options pour choisir ces fonction
+
+
+
+Premier objectif : 
+
+Faire un modèle perceptron pour une tache de classification binaire.
+Après ca tu verras.
+
+
+Programme full anglais
+Pour l'affichage voir QT Charts
