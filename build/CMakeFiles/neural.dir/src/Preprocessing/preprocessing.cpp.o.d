@@ -1,6 +1,8 @@
 CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.o: \
  /home/pierre/Documents/AI/FirstNeuralNetwork/src/Preprocessing/preprocessing.cpp \
- /usr/include/stdc-predef.h /usr/include/c++/11/iostream \
+ /usr/include/stdc-predef.h \
+ /home/pierre/Documents/AI/FirstNeuralNetwork/includes/others/preprocessing.h \
+ /usr/include/c++/11/iostream \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -447,4 +449,4 @@ CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.o: \
  /usr/local/include/opencv4/opencv2/video.hpp \
  /usr/local/include/opencv4/opencv2/video/tracking.hpp \
  /usr/local/include/opencv4/opencv2/video/background_segm.hpp \
- /home/pierre/Documents/AI/FirstNeuralNetwork/src/Preprocessing/preprocessing.h
+ /home/pierre/Documents/AI/FirstNeuralNetwork/includes/stb_image.h

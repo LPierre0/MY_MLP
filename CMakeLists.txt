@@ -8,7 +8,7 @@ project(NeuralNetwork)
 set(SOURCES 
     src/main.cpp
     src/neuron.cpp
-    src/neuron.cpp
+    src/network.cpp
     src/stb_image.cpp
     src/utils.cpp
     src/display.cpp
@@ -36,3 +36,4 @@ set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
 
 # Ajouter des drapeaux de compilation supplémentaires
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -march=native")
+

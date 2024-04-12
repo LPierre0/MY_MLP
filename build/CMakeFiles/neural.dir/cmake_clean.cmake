@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/neural.dir/src/display.cpp.o.d"
   "CMakeFiles/neural.dir/src/main.cpp.o"
   "CMakeFiles/neural.dir/src/main.cpp.o.d"
+  "CMakeFiles/neural.dir/src/network.cpp.o"
+  "CMakeFiles/neural.dir/src/network.cpp.o.d"
   "CMakeFiles/neural.dir/src/neuron.cpp.o"
   "CMakeFiles/neural.dir/src/neuron.cpp.o.d"
   "CMakeFiles/neural.dir/src/stb_image.cpp.o"

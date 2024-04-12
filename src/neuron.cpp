@@ -1,5 +1,5 @@
 #include "neural/neuron.h"
-
+#include "others/utils.h"
 
 
 void neurons::actualiseWeight(int yTrain){
@@ -21,9 +21,13 @@ void neurons::calculateOut(){
     else this->out = -1;
 }
 
-void neurons::init(std::vector<float> inValue, std::vector<float> weightIn, float biais, int type){
-    this->setIn(inValue);
-    this->setWeightIn(weightIn);
+
+void neurons::initWeight(unsigned int dataSize){
+    this->weightIn.assign(dataSize, 0.0f);
+}
+
+void neurons::init(unsigned int dataSize,float biais, int type){
+    this->initWeight(dataSize);
     this->setBiais(biais);
     this->setType(type);
     this->out = 0.0f;
@@ -60,4 +64,31 @@ void neurons::printSelf(){
     std::cout << "Value in  : ";
     printVectorFloat(this->in);
     std::cout << std::endl;
+}
+
+void neurons::train(std::vector<data_t> dataLabelled){
+    int nbIter = 0;
+    int nbNoModif = 0;
+    while (nbNoModif < dataLabelled.size() - 1 && nbIter < 100){
+        nbNoModif = 0;
+        std::vector<unsigned int> indicesTab = shuffle(dataLabelled.size());
+        for(unsigned int i = 0; i < indicesTab.size(); i++){
+
+            this->in = dataLabelled[indicesTab[i]].vectorizedImg;
+            this->calculateOut();
+            if (this->out != dataLabelled[indicesTab[i]].label){
+                this->actualiseWeight(dataLabelled[indicesTab[i]].label);
+            }else{
+                nbNoModif++;
+            }
+        }
+        nbIter++;
+    }
+}
+
+
+int neurons::predict(std::vector<float> vecToPred){
+    this->in = vecToPred;
+    this->calculateOut();
+    return this->out;
 }

@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include "others/utils.h"
+#include "others/preprocessing.h"
 
 #define PERCEPTRON 1
 
@@ -19,10 +20,13 @@ class neurons {
         void setWeightIn(std::vector<float> wIn); 
         void setType(int t);
         void setBiais(float b);
-        void init(std::vector<float> inValue, std::vector<float> weightIn, float biais, int type);
+        void initWeight(unsigned int dataSize);
+        void init(unsigned int dataSize, float biais, int type);
         void calculateOut();
         void printSelf();
         void actualiseWeight(int yTrain);
+        void train(std::vector<data_t> dataLabelled);
+        int predict(std::vector<float> vecToPred);
 };
 
 #endif

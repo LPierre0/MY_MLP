@@ -8,5 +8,5 @@
 void printVectorFloat(std::vector<float> vec); 
 void printVectorInt(std::vector<int> vec);
 void test();
-
+std::vector<unsigned int> shuffle(unsigned int size);
 #endif
