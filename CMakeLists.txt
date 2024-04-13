@@ -6,34 +6,44 @@ project(NeuralNetwork)
 
 # Déclaration des fichiers source du projet
 set(SOURCES 
-    src/main.cpp
     src/neuron.cpp
     src/network.cpp
     src/stb_image.cpp
     src/utils.cpp
     src/display.cpp
+)
+
+set(SOURCES_MAIN
+    ${SOURCES}
+    src/main.cpp
+)
+
+set(SOURCES_TEST
+    ${SOURCES}
+    src/test.cpp
+)
+
+set(SOURCES_PREPROCESSING
     src/Preprocessing/preprocessing.cpp
 )
 
-# Ajouter un exécutable basé sur les fichiers source
-add_executable(neural ${SOURCES})
+add_executable(neural ${SOURCES_MAIN})
+add_executable(test ${SOURCES_TEST})
+add_executable(preprocessing ${SOURCES_PREPROCESSING})
 
-# Trouver et inclure OpenCV
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-# Liaison de l'exécutable avec les bibliothèques OpenCV
 target_link_libraries(neural ${OpenCV_LIBS})
-
-# Spécifier les répertoires d'inclusion
 target_include_directories(neural PUBLIC includes)
 
-# Définir le mode de compilation
-set(CMAKE_BUILD_TYPE Release)  # Mode de compilation Release pour les optimisations
+target_link_libraries(test ${OpenCV_LIBS})
+target_include_directories(test PUBLIC includes)
 
-# Activer l'optimisation interprocédurale
+target_link_libraries(preprocessing ${OpenCV_LIBS})
+target_include_directories(preprocessing PUBLIC includes)
+
+set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
-
-# Ajouter des drapeaux de compilation supplémentaires
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -march=native")
 

@@ -69,24 +69,10 @@ include CMakeFiles/neural.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/neural.dir/flags.make
 
-CMakeFiles/neural.dir/src/main.cpp.o: CMakeFiles/neural.dir/flags.make
-CMakeFiles/neural.dir/src/main.cpp.o: ../src/main.cpp
-CMakeFiles/neural.dir/src/main.cpp.o: CMakeFiles/neural.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/neural.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/neural.dir/src/main.cpp.o -MF CMakeFiles/neural.dir/src/main.cpp.o.d -o CMakeFiles/neural.dir/src/main.cpp.o -c /home/pierre/Documents/AI/FirstNeuralNetwork/src/main.cpp
-
-CMakeFiles/neural.dir/src/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/neural.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pierre/Documents/AI/FirstNeuralNetwork/src/main.cpp > CMakeFiles/neural.dir/src/main.cpp.i
-
-CMakeFiles/neural.dir/src/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/neural.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pierre/Documents/AI/FirstNeuralNetwork/src/main.cpp -o CMakeFiles/neural.dir/src/main.cpp.s
-
 CMakeFiles/neural.dir/src/neuron.cpp.o: CMakeFiles/neural.dir/flags.make
 CMakeFiles/neural.dir/src/neuron.cpp.o: ../src/neuron.cpp
 CMakeFiles/neural.dir/src/neuron.cpp.o: CMakeFiles/neural.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/neural.dir/src/neuron.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/neural.dir/src/neuron.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/neural.dir/src/neuron.cpp.o -MF CMakeFiles/neural.dir/src/neuron.cpp.o.d -o CMakeFiles/neural.dir/src/neuron.cpp.o -c /home/pierre/Documents/AI/FirstNeuralNetwork/src/neuron.cpp
 
 CMakeFiles/neural.dir/src/neuron.cpp.i: cmake_force
@@ -100,7 +86,7 @@ CMakeFiles/neural.dir/src/neuron.cpp.s: cmake_force
 CMakeFiles/neural.dir/src/network.cpp.o: CMakeFiles/neural.dir/flags.make
 CMakeFiles/neural.dir/src/network.cpp.o: ../src/network.cpp
 CMakeFiles/neural.dir/src/network.cpp.o: CMakeFiles/neural.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/neural.dir/src/network.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/neural.dir/src/network.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/neural.dir/src/network.cpp.o -MF CMakeFiles/neural.dir/src/network.cpp.o.d -o CMakeFiles/neural.dir/src/network.cpp.o -c /home/pierre/Documents/AI/FirstNeuralNetwork/src/network.cpp
 
 CMakeFiles/neural.dir/src/network.cpp.i: cmake_force
@@ -114,7 +100,7 @@ CMakeFiles/neural.dir/src/network.cpp.s: cmake_force
 CMakeFiles/neural.dir/src/stb_image.cpp.o: CMakeFiles/neural.dir/flags.make
 CMakeFiles/neural.dir/src/stb_image.cpp.o: ../src/stb_image.cpp
 CMakeFiles/neural.dir/src/stb_image.cpp.o: CMakeFiles/neural.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/neural.dir/src/stb_image.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/neural.dir/src/stb_image.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/neural.dir/src/stb_image.cpp.o -MF CMakeFiles/neural.dir/src/stb_image.cpp.o.d -o CMakeFiles/neural.dir/src/stb_image.cpp.o -c /home/pierre/Documents/AI/FirstNeuralNetwork/src/stb_image.cpp
 
 CMakeFiles/neural.dir/src/stb_image.cpp.i: cmake_force
@@ -128,7 +114,7 @@ CMakeFiles/neural.dir/src/stb_image.cpp.s: cmake_force
 CMakeFiles/neural.dir/src/utils.cpp.o: CMakeFiles/neural.dir/flags.make
 CMakeFiles/neural.dir/src/utils.cpp.o: ../src/utils.cpp
 CMakeFiles/neural.dir/src/utils.cpp.o: CMakeFiles/neural.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/neural.dir/src/utils.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/neural.dir/src/utils.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/neural.dir/src/utils.cpp.o -MF CMakeFiles/neural.dir/src/utils.cpp.o.d -o CMakeFiles/neural.dir/src/utils.cpp.o -c /home/pierre/Documents/AI/FirstNeuralNetwork/src/utils.cpp
 
 CMakeFiles/neural.dir/src/utils.cpp.i: cmake_force
@@ -142,7 +128,7 @@ CMakeFiles/neural.dir/src/utils.cpp.s: cmake_force
 CMakeFiles/neural.dir/src/display.cpp.o: CMakeFiles/neural.dir/flags.make
 CMakeFiles/neural.dir/src/display.cpp.o: ../src/display.cpp
 CMakeFiles/neural.dir/src/display.cpp.o: CMakeFiles/neural.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/neural.dir/src/display.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/neural.dir/src/display.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/neural.dir/src/display.cpp.o -MF CMakeFiles/neural.dir/src/display.cpp.o.d -o CMakeFiles/neural.dir/src/display.cpp.o -c /home/pierre/Documents/AI/FirstNeuralNetwork/src/display.cpp
 
 CMakeFiles/neural.dir/src/display.cpp.i: cmake_force
@@ -153,40 +139,38 @@ CMakeFiles/neural.dir/src/display.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/neural.dir/src/display.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pierre/Documents/AI/FirstNeuralNetwork/src/display.cpp -o CMakeFiles/neural.dir/src/display.cpp.s
 
-CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.o: CMakeFiles/neural.dir/flags.make
-CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.o: ../src/Preprocessing/preprocessing.cpp
-CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.o: CMakeFiles/neural.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.o -MF CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.o.d -o CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.o -c /home/pierre/Documents/AI/FirstNeuralNetwork/src/Preprocessing/preprocessing.cpp
+CMakeFiles/neural.dir/src/main.cpp.o: CMakeFiles/neural.dir/flags.make
+CMakeFiles/neural.dir/src/main.cpp.o: ../src/main.cpp
+CMakeFiles/neural.dir/src/main.cpp.o: CMakeFiles/neural.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/neural.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/neural.dir/src/main.cpp.o -MF CMakeFiles/neural.dir/src/main.cpp.o.d -o CMakeFiles/neural.dir/src/main.cpp.o -c /home/pierre/Documents/AI/FirstNeuralNetwork/src/main.cpp
 
-CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pierre/Documents/AI/FirstNeuralNetwork/src/Preprocessing/preprocessing.cpp > CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.i
+CMakeFiles/neural.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/neural.dir/src/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pierre/Documents/AI/FirstNeuralNetwork/src/main.cpp > CMakeFiles/neural.dir/src/main.cpp.i
 
-CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pierre/Documents/AI/FirstNeuralNetwork/src/Preprocessing/preprocessing.cpp -o CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.s
+CMakeFiles/neural.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/neural.dir/src/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pierre/Documents/AI/FirstNeuralNetwork/src/main.cpp -o CMakeFiles/neural.dir/src/main.cpp.s
 
 # Object files for target neural
 neural_OBJECTS = \
-"CMakeFiles/neural.dir/src/main.cpp.o" \
 "CMakeFiles/neural.dir/src/neuron.cpp.o" \
 "CMakeFiles/neural.dir/src/network.cpp.o" \
 "CMakeFiles/neural.dir/src/stb_image.cpp.o" \
 "CMakeFiles/neural.dir/src/utils.cpp.o" \
 "CMakeFiles/neural.dir/src/display.cpp.o" \
-"CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.o"
+"CMakeFiles/neural.dir/src/main.cpp.o"
 
 # External object files for target neural
 neural_EXTERNAL_OBJECTS =
 
-neural: CMakeFiles/neural.dir/src/main.cpp.o
 neural: CMakeFiles/neural.dir/src/neuron.cpp.o
 neural: CMakeFiles/neural.dir/src/network.cpp.o
 neural: CMakeFiles/neural.dir/src/stb_image.cpp.o
 neural: CMakeFiles/neural.dir/src/utils.cpp.o
 neural: CMakeFiles/neural.dir/src/display.cpp.o
-neural: CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.o
+neural: CMakeFiles/neural.dir/src/main.cpp.o
 neural: CMakeFiles/neural.dir/build.make
 neural: /usr/local/lib/libopencv_gapi.so.4.9.0
 neural: /usr/local/lib/libopencv_highgui.so.4.9.0
@@ -204,7 +188,7 @@ neural: /usr/local/lib/libopencv_flann.so.4.9.0
 neural: /usr/local/lib/libopencv_imgproc.so.4.9.0
 neural: /usr/local/lib/libopencv_core.so.4.9.0
 neural: CMakeFiles/neural.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable neural"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable neural"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/neural.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

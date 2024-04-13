@@ -3,17 +3,10 @@
 
 #include <iostream>
 #include <filesystem>
+#include <vector>
 #include <opencv2/opencv.hpp>
 #include "stb_image.h"
-#include <vector>
 
-typedef struct data_s{
-    std::vector<float> vectorizedImg;
-    int label;
-}data_t;
-
-int resize();
-std::vector<float> vectorize(std::string path_image);
-std::vector<data_t> getDataLabelled(std::vector<std::string> foldersName, std::string path_dataset);
+void resizeFolder(std::string pathFolderToResize, std::string pathNewFolder, int newWidht, int newHeight);
 
 #endif

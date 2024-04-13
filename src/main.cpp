@@ -1,16 +1,14 @@
 #include "neural/neuron.h"
-#include "others/utils.h"
-#include "others/preprocessing.h"
 #include "neural/network.h"
+#include "others/utils.h"
 #include <opencv2/opencv.hpp>
+#include <opencv2/opencv.hpp>
+#include <iostream>
 
 namespace fs = std::filesystem;
-
 float nbPred = 0;
 float nbPredSucces = 0;
 
-#include <opencv2/opencv.hpp>
-#include <iostream>
 
 void showImg(std::string pathImg, std::string predict, std::string ytrue) {
     cv::Mat image = cv::imread(pathImg, cv::IMREAD_COLOR);

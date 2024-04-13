@@ -129,12 +129,38 @@ neural/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/build
 .PHONY : neural/fast
 
+#=============================================================================
+# Target rules for targets named test
+
+# Build rule for target.
+test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test
+.PHONY : test
+
+# fast build rule for target.
+test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/build
+.PHONY : test/fast
+
+#=============================================================================
+# Target rules for targets named preprocessing
+
+# Build rule for target.
+preprocessing: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preprocessing
+.PHONY : preprocessing
+
+# fast build rule for target.
+preprocessing/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/preprocessing.dir/build.make CMakeFiles/preprocessing.dir/build
+.PHONY : preprocessing/fast
+
 src/Preprocessing/preprocessing.o: src/Preprocessing/preprocessing.cpp.o
 .PHONY : src/Preprocessing/preprocessing.o
 
 # target to build an object file
 src/Preprocessing/preprocessing.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/preprocessing.dir/build.make CMakeFiles/preprocessing.dir/src/Preprocessing/preprocessing.cpp.o
 .PHONY : src/Preprocessing/preprocessing.cpp.o
 
 src/Preprocessing/preprocessing.i: src/Preprocessing/preprocessing.cpp.i
@@ -142,7 +168,7 @@ src/Preprocessing/preprocessing.i: src/Preprocessing/preprocessing.cpp.i
 
 # target to preprocess a source file
 src/Preprocessing/preprocessing.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/preprocessing.dir/build.make CMakeFiles/preprocessing.dir/src/Preprocessing/preprocessing.cpp.i
 .PHONY : src/Preprocessing/preprocessing.cpp.i
 
 src/Preprocessing/preprocessing.s: src/Preprocessing/preprocessing.cpp.s
@@ -150,7 +176,7 @@ src/Preprocessing/preprocessing.s: src/Preprocessing/preprocessing.cpp.s
 
 # target to generate assembly for a file
 src/Preprocessing/preprocessing.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/src/Preprocessing/preprocessing.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/preprocessing.dir/build.make CMakeFiles/preprocessing.dir/src/Preprocessing/preprocessing.cpp.s
 .PHONY : src/Preprocessing/preprocessing.cpp.s
 
 src/display.o: src/display.cpp.o
@@ -159,6 +185,7 @@ src/display.o: src/display.cpp.o
 # target to build an object file
 src/display.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/src/display.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/display.cpp.o
 .PHONY : src/display.cpp.o
 
 src/display.i: src/display.cpp.i
@@ -167,6 +194,7 @@ src/display.i: src/display.cpp.i
 # target to preprocess a source file
 src/display.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/src/display.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/display.cpp.i
 .PHONY : src/display.cpp.i
 
 src/display.s: src/display.cpp.s
@@ -175,6 +203,7 @@ src/display.s: src/display.cpp.s
 # target to generate assembly for a file
 src/display.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/src/display.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/display.cpp.s
 .PHONY : src/display.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -207,6 +236,7 @@ src/network.o: src/network.cpp.o
 # target to build an object file
 src/network.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/src/network.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/network.cpp.o
 .PHONY : src/network.cpp.o
 
 src/network.i: src/network.cpp.i
@@ -215,6 +245,7 @@ src/network.i: src/network.cpp.i
 # target to preprocess a source file
 src/network.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/src/network.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/network.cpp.i
 .PHONY : src/network.cpp.i
 
 src/network.s: src/network.cpp.s
@@ -223,6 +254,7 @@ src/network.s: src/network.cpp.s
 # target to generate assembly for a file
 src/network.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/src/network.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/network.cpp.s
 .PHONY : src/network.cpp.s
 
 src/neuron.o: src/neuron.cpp.o
@@ -231,6 +263,7 @@ src/neuron.o: src/neuron.cpp.o
 # target to build an object file
 src/neuron.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/src/neuron.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/neuron.cpp.o
 .PHONY : src/neuron.cpp.o
 
 src/neuron.i: src/neuron.cpp.i
@@ -239,6 +272,7 @@ src/neuron.i: src/neuron.cpp.i
 # target to preprocess a source file
 src/neuron.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/src/neuron.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/neuron.cpp.i
 .PHONY : src/neuron.cpp.i
 
 src/neuron.s: src/neuron.cpp.s
@@ -247,6 +281,7 @@ src/neuron.s: src/neuron.cpp.s
 # target to generate assembly for a file
 src/neuron.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/src/neuron.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/neuron.cpp.s
 .PHONY : src/neuron.cpp.s
 
 src/stb_image.o: src/stb_image.cpp.o
@@ -255,6 +290,7 @@ src/stb_image.o: src/stb_image.cpp.o
 # target to build an object file
 src/stb_image.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/src/stb_image.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/stb_image.cpp.o
 .PHONY : src/stb_image.cpp.o
 
 src/stb_image.i: src/stb_image.cpp.i
@@ -263,6 +299,7 @@ src/stb_image.i: src/stb_image.cpp.i
 # target to preprocess a source file
 src/stb_image.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/src/stb_image.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/stb_image.cpp.i
 .PHONY : src/stb_image.cpp.i
 
 src/stb_image.s: src/stb_image.cpp.s
@@ -271,7 +308,32 @@ src/stb_image.s: src/stb_image.cpp.s
 # target to generate assembly for a file
 src/stb_image.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/src/stb_image.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/stb_image.cpp.s
 .PHONY : src/stb_image.cpp.s
+
+src/test.o: src/test.cpp.o
+.PHONY : src/test.o
+
+# target to build an object file
+src/test.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/test.cpp.o
+.PHONY : src/test.cpp.o
+
+src/test.i: src/test.cpp.i
+.PHONY : src/test.i
+
+# target to preprocess a source file
+src/test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/test.cpp.i
+.PHONY : src/test.cpp.i
+
+src/test.s: src/test.cpp.s
+.PHONY : src/test.s
+
+# target to generate assembly for a file
+src/test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/test.cpp.s
+.PHONY : src/test.cpp.s
 
 src/utils.o: src/utils.cpp.o
 .PHONY : src/utils.o
@@ -279,6 +341,7 @@ src/utils.o: src/utils.cpp.o
 # target to build an object file
 src/utils.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/src/utils.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/utils.cpp.o
 .PHONY : src/utils.cpp.o
 
 src/utils.i: src/utils.cpp.i
@@ -287,6 +350,7 @@ src/utils.i: src/utils.cpp.i
 # target to preprocess a source file
 src/utils.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/src/utils.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/utils.cpp.i
 .PHONY : src/utils.cpp.i
 
 src/utils.s: src/utils.cpp.s
@@ -295,6 +359,7 @@ src/utils.s: src/utils.cpp.s
 # target to generate assembly for a file
 src/utils.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/neural.dir/build.make CMakeFiles/neural.dir/src/utils.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test.dir/build.make CMakeFiles/test.dir/src/utils.cpp.s
 .PHONY : src/utils.cpp.s
 
 # Help Target
@@ -306,6 +371,8 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... neural"
+	@echo "... preprocessing"
+	@echo "... test"
 	@echo "... src/Preprocessing/preprocessing.o"
 	@echo "... src/Preprocessing/preprocessing.i"
 	@echo "... src/Preprocessing/preprocessing.s"
@@ -324,6 +391,9 @@ help:
 	@echo "... src/stb_image.o"
 	@echo "... src/stb_image.i"
 	@echo "... src/stb_image.s"
+	@echo "... src/test.o"
+	@echo "... src/test.i"
+	@echo "... src/test.s"
 	@echo "... src/utils.o"
 	@echo "... src/utils.i"
 	@echo "... src/utils.s"

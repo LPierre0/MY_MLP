@@ -1,5 +1,4 @@
 #include "neural/neuron.h"
-#include "others/utils.h"
 
 
 void neurons::actualiseWeight(int yTrain){
