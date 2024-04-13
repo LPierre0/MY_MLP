@@ -1,5 +1,6 @@
 /home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles/neural.dir
 /home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles/test.dir
 /home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles/preprocessing.dir
+/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles/clean-project.dir
 /home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles/edit_cache.dir
 /home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles/rebuild_cache.dir

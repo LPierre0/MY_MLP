@@ -58,12 +58,11 @@ void testPredict(std::vector<std::string> folders, neurons perp){
 
 int main(){
     std::vector<std::string> folder = {"Pikachu", "Jigglypuff"};
-    neurons perp;
 
     std::vector<float> weightIn = {};
     std::vector<int> yTrain = {-1};
     std::vector<data_t> dataLabelled = getDataLabelled(folder, "/home/pierre/Documents/AI/DatasetCleaned/");
-    perp.init(dataLabelled[0].vectorizedImg.size(), 0.1f, PERCEPTRON);
+    neurons perp(dataLabelled[0].vectorizedImg.size(), 0.1f, PERCEPTRON);
     perp.train(dataLabelled);
     testPredict(folder, perp);
 

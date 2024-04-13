@@ -155,6 +155,19 @@ preprocessing/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/preprocessing.dir/build.make CMakeFiles/preprocessing.dir/build
 .PHONY : preprocessing/fast
 
+#=============================================================================
+# Target rules for targets named clean-project
+
+# Build rule for target.
+clean-project: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean-project
+.PHONY : clean-project
+
+# fast build rule for target.
+clean-project/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/clean-project.dir/build.make CMakeFiles/clean-project.dir/build
+.PHONY : clean-project/fast
+
 src/Preprocessing/preprocessing.o: src/Preprocessing/preprocessing.cpp.o
 .PHONY : src/Preprocessing/preprocessing.o
 
@@ -370,6 +383,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... clean-project"
 	@echo "... neural"
 	@echo "... preprocessing"
 	@echo "... test"

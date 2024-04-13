@@ -76,6 +76,7 @@ preinstall:
 clean: CMakeFiles/neural.dir/clean
 clean: CMakeFiles/test.dir/clean
 clean: CMakeFiles/preprocessing.dir/clean
+clean: CMakeFiles/clean-project.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -155,6 +156,32 @@ preprocessing: CMakeFiles/preprocessing.dir/rule
 CMakeFiles/preprocessing.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/preprocessing.dir/build.make CMakeFiles/preprocessing.dir/clean
 .PHONY : CMakeFiles/preprocessing.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/clean-project.dir
+
+# All Build rule for target.
+CMakeFiles/clean-project.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/clean-project.dir/build.make CMakeFiles/clean-project.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/clean-project.dir/build.make CMakeFiles/clean-project.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num= "Built target clean-project"
+.PHONY : CMakeFiles/clean-project.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/clean-project.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/clean-project.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles 0
+.PHONY : CMakeFiles/clean-project.dir/rule
+
+# Convenience name for target.
+clean-project: CMakeFiles/clean-project.dir/rule
+.PHONY : clean-project
+
+# clean rule for target.
+CMakeFiles/clean-project.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/clean-project.dir/build.make CMakeFiles/clean-project.dir/clean
+.PHONY : CMakeFiles/clean-project.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

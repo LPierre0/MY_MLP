@@ -1,10 +1,7 @@
-# Spécifiez la version minimale requise de CMake
 cmake_minimum_required(VERSION 3.0)
 
-# Définition du nom du projet
 project(NeuralNetwork)
 
-# Déclaration des fichiers source du projet
 set(SOURCES 
     src/neuron.cpp
     src/network.cpp
@@ -47,3 +44,6 @@ set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -march=native")
 
+add_custom_target(clean-project
+    COMMAND rm -rf ../src/*.o
+)

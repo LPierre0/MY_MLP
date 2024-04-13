@@ -21,16 +21,15 @@ void printVectorInt(std::vector<int> vec){
     cout << vec[(vec.size() - 1)] << endl;
 }
 
-std::vector<unsigned int> shuffle(unsigned int size){
+std::vector<unsigned int> createShuffledIndices(unsigned int size){
     std::vector<unsigned int> indicesVec;
+
     for(unsigned int i = 0; i < size; i++){
         indicesVec.push_back(i);
     }
-
     std::random_device rd;
     std::mt19937 g(rd());
     std::shuffle(indicesVec.begin(), indicesVec.end(), g);
-
     return indicesVec;
 }
 
@@ -59,9 +58,9 @@ std::vector<data_t> getDataLabelled(std::vector<std::string> foldersName, std::s
     namespace fs = std::filesystem;
     std::vector<data_t> dataLabelled;
     for (const auto& folderName : foldersName){
-        for (const auto& entry : fs::recursive_directory_iterator(path_dataset + folderName)){
+        for (const auto& img : fs::recursive_directory_iterator(path_dataset + folderName)){
             data_t temp;
-            temp.vectorizedImg = vectorize(entry.path());
+            temp.vectorizedImg = vectorize(img.path());
             if (folderName == "Pikachu"){
                 temp.label = 1;
             }else{
