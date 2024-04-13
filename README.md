@@ -4,4 +4,4 @@ First, I made a simple perceptron to understand how to create neural network fro
 
 
 The output is an image of Charmander or Charmeleon with the prediction of the perceptron at the top left.
-It's hard to have a good accuracy because the two pokemon are very similar but I've tried between Jigglypuff and Pikachu and the results were better.
+It's hard to have a good accuracy because the two pokemon are very similar but I've tried between Jigglypuff and Pikachu and the results were fine.
