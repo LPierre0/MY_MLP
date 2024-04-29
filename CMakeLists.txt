@@ -5,6 +5,7 @@ project(NeuralNetwork)
 set(SOURCES 
     src/neuron.cpp
     src/network.cpp
+    src/function.cpp
     src/stb_image.cpp
     src/utils.cpp
     src/display.cpp
@@ -38,6 +39,19 @@ target_link_libraries(test ${OpenCV_LIBS})
 target_include_directories(test PUBLIC includes)
 
 target_link_libraries(preprocessing ${OpenCV_LIBS})
+target_include_directories(preprocessing PUBLIC includes)
+
+
+find_package(SFML 2.5 COMPONENTS graphics REQUIRED)
+include_directories(${SFML_INCLUDE_DIRS})
+
+target_link_libraries(neural sfml-graphics sfml-window)
+target_include_directories(neural PUBLIC includes)
+
+target_link_libraries(test sfml-graphics)
+target_include_directories(test PUBLIC includes)
+
+target_link_libraries(preprocessing sfml-graphics)
 target_include_directories(preprocessing PUBLIC includes)
 
 set(CMAKE_BUILD_TYPE Release)

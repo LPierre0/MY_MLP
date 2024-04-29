@@ -97,10 +97,24 @@ CMakeFiles/test.dir/src/network.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.dir/src/network.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pierre/Documents/AI/FirstNeuralNetwork/src/network.cpp -o CMakeFiles/test.dir/src/network.cpp.s
 
+CMakeFiles/test.dir/src/function.cpp.o: CMakeFiles/test.dir/flags.make
+CMakeFiles/test.dir/src/function.cpp.o: ../src/function.cpp
+CMakeFiles/test.dir/src/function.cpp.o: CMakeFiles/test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test.dir/src/function.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/src/function.cpp.o -MF CMakeFiles/test.dir/src/function.cpp.o.d -o CMakeFiles/test.dir/src/function.cpp.o -c /home/pierre/Documents/AI/FirstNeuralNetwork/src/function.cpp
+
+CMakeFiles/test.dir/src/function.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test.dir/src/function.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pierre/Documents/AI/FirstNeuralNetwork/src/function.cpp > CMakeFiles/test.dir/src/function.cpp.i
+
+CMakeFiles/test.dir/src/function.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test.dir/src/function.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pierre/Documents/AI/FirstNeuralNetwork/src/function.cpp -o CMakeFiles/test.dir/src/function.cpp.s
+
 CMakeFiles/test.dir/src/stb_image.cpp.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/src/stb_image.cpp.o: ../src/stb_image.cpp
 CMakeFiles/test.dir/src/stb_image.cpp.o: CMakeFiles/test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test.dir/src/stb_image.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/test.dir/src/stb_image.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/src/stb_image.cpp.o -MF CMakeFiles/test.dir/src/stb_image.cpp.o.d -o CMakeFiles/test.dir/src/stb_image.cpp.o -c /home/pierre/Documents/AI/FirstNeuralNetwork/src/stb_image.cpp
 
 CMakeFiles/test.dir/src/stb_image.cpp.i: cmake_force
@@ -114,7 +128,7 @@ CMakeFiles/test.dir/src/stb_image.cpp.s: cmake_force
 CMakeFiles/test.dir/src/utils.cpp.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/src/utils.cpp.o: ../src/utils.cpp
 CMakeFiles/test.dir/src/utils.cpp.o: CMakeFiles/test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/test.dir/src/utils.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/test.dir/src/utils.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/src/utils.cpp.o -MF CMakeFiles/test.dir/src/utils.cpp.o.d -o CMakeFiles/test.dir/src/utils.cpp.o -c /home/pierre/Documents/AI/FirstNeuralNetwork/src/utils.cpp
 
 CMakeFiles/test.dir/src/utils.cpp.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/test.dir/src/utils.cpp.s: cmake_force
 CMakeFiles/test.dir/src/display.cpp.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/src/display.cpp.o: ../src/display.cpp
 CMakeFiles/test.dir/src/display.cpp.o: CMakeFiles/test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/test.dir/src/display.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/test.dir/src/display.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/src/display.cpp.o -MF CMakeFiles/test.dir/src/display.cpp.o.d -o CMakeFiles/test.dir/src/display.cpp.o -c /home/pierre/Documents/AI/FirstNeuralNetwork/src/display.cpp
 
 CMakeFiles/test.dir/src/display.cpp.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/test.dir/src/display.cpp.s: cmake_force
 CMakeFiles/test.dir/src/test.cpp.o: CMakeFiles/test.dir/flags.make
 CMakeFiles/test.dir/src/test.cpp.o: ../src/test.cpp
 CMakeFiles/test.dir/src/test.cpp.o: CMakeFiles/test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/test.dir/src/test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/test.dir/src/test.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test.dir/src/test.cpp.o -MF CMakeFiles/test.dir/src/test.cpp.o.d -o CMakeFiles/test.dir/src/test.cpp.o -c /home/pierre/Documents/AI/FirstNeuralNetwork/src/test.cpp
 
 CMakeFiles/test.dir/src/test.cpp.i: cmake_force
@@ -157,6 +171,7 @@ CMakeFiles/test.dir/src/test.cpp.s: cmake_force
 test_OBJECTS = \
 "CMakeFiles/test.dir/src/neuron.cpp.o" \
 "CMakeFiles/test.dir/src/network.cpp.o" \
+"CMakeFiles/test.dir/src/function.cpp.o" \
 "CMakeFiles/test.dir/src/stb_image.cpp.o" \
 "CMakeFiles/test.dir/src/utils.cpp.o" \
 "CMakeFiles/test.dir/src/display.cpp.o" \
@@ -167,6 +182,7 @@ test_EXTERNAL_OBJECTS =
 
 test: CMakeFiles/test.dir/src/neuron.cpp.o
 test: CMakeFiles/test.dir/src/network.cpp.o
+test: CMakeFiles/test.dir/src/function.cpp.o
 test: CMakeFiles/test.dir/src/stb_image.cpp.o
 test: CMakeFiles/test.dir/src/utils.cpp.o
 test: CMakeFiles/test.dir/src/display.cpp.o
@@ -180,6 +196,7 @@ test: /usr/local/lib/libopencv_photo.so.4.9.0
 test: /usr/local/lib/libopencv_stitching.so.4.9.0
 test: /usr/local/lib/libopencv_video.so.4.9.0
 test: /usr/local/lib/libopencv_videoio.so.4.9.0
+test: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.5.1
 test: /usr/local/lib/libopencv_imgcodecs.so.4.9.0
 test: /usr/local/lib/libopencv_dnn.so.4.9.0
 test: /usr/local/lib/libopencv_calib3d.so.4.9.0
@@ -187,8 +204,10 @@ test: /usr/local/lib/libopencv_features2d.so.4.9.0
 test: /usr/local/lib/libopencv_flann.so.4.9.0
 test: /usr/local/lib/libopencv_imgproc.so.4.9.0
 test: /usr/local/lib/libopencv_core.so.4.9.0
+test: /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.5.1
+test: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.5.1
 test: CMakeFiles/test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pierre/Documents/AI/FirstNeuralNetwork/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

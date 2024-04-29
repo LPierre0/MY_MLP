@@ -4,6 +4,7 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/opencv.hpp>
 #include <iostream>
+#include "others/display.h"
 
 namespace fs = std::filesystem;
 float nbPred = 0;
@@ -37,18 +38,17 @@ void showImg(std::string pathImg, std::string predict, std::string ytrue) {
 
 
 
-void testPredict(std::vector<std::string> folders, neurons perp){
-    std::string pathName = "/home/pierre//Documents/AI/TestCleaned/";
+void testPredict(std::vector<std::string> folders, neurons perp, std::string pathNameTest){
     std::string predict;
     for (const auto& folder : folders){
-        for (const auto& entry : fs::recursive_directory_iterator(pathName + folder)){
+        for (const auto& entry : fs::recursive_directory_iterator(pathNameTest + folder)){
             data_t temp;
             temp.vectorizedImg = vectorize(entry.path());
             int pred = perp.predict(temp.vectorizedImg);
             if (pred == 1){
-                predict = "Pikachu";
+                predict = "Charmander";
             }else{
-                predict = "Jigglypuff";
+                predict = "Charmeleon";
             }
             showImg(entry.path(), predict, folder);
         }
@@ -56,16 +56,16 @@ void testPredict(std::vector<std::string> folders, neurons perp){
 }
 
 
+
+
+
 int main(){
-    std::vector<std::string> folder = {"Pikachu", "Jigglypuff"};
-
-    std::vector<float> weightIn = {};
-    std::vector<int> yTrain = {-1};
-    std::vector<data_t> dataLabelled = getDataLabelled(folder, "/home/pierre/Documents/AI/DatasetCleaned/");
-    neurons perp(dataLabelled[0].vectorizedImg.size(), 0.1f, PERCEPTRON);
-    perp.train(dataLabelled);
-    testPredict(folder, perp);
-
-    std::cout << (nbPredSucces/nbPred) * 100 << "%" << std::endl;
-    return 1;
+    network net;
+    net.createMlp();
+    std::vector<float> valueIn = {1.0f, 1.0f};
+    std::vector<float> out = net.forward(valueIn);
+    for(float elem : out){
+        std::cout << elem << std::endl;
+    }
+    display(net);
 }

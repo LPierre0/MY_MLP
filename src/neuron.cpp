@@ -1,12 +1,14 @@
 #include "neural/neuron.h"
 
-neurons::neurons(unsigned int valueInSize,float biais, int type){
+neurons::neurons(unsigned int valueInSize, float biais, int type, std::function<float(float x)> activation){
     this->setValueInSize(valueInSize);
-    this->initWeight(valueInSize);
     this->setBiais(biais);
     this->setNeuronsType(type);
+    this->setFunction(activation);
     this->out = 0.0f;
 }
+
+// TODO: Paralléliser
 
 void neurons::train(std::vector<data_t> dataLabelled){
     int nbIter = 0;
@@ -66,15 +68,19 @@ void neurons::setBiais(float b){
     this->biais = b;
 }
 
-void neurons::setValueInSize(int valueInSize){
+void neurons::setValueInSize(unsigned int valueInSize){
     if (valueInSize < 1){
         throw std::runtime_error("The Size of value In is lower than 1");
     }
     this->valueInSize = valueInSize;
 }
 
+void neurons::setFunction(std::function<float(float x)> function){
+    this->activation = function;
+}
+
 // GETTERS
-int neurons::getOut(){
+float neurons::getOut(){
     return this->out;
 }
 
@@ -94,26 +100,33 @@ std::vector<float> neurons::getWeightIn(){
     return this->weightIn;
 }
 
-int neurons::getValueInSize(){
+unsigned int neurons::getValueInSize(){
     return this->valueInSize;
 }
 
 
-void neurons::initWeight(unsigned int dataSize){
-    this->weightIn.assign(dataSize, 0.0f);
+void neurons::initWeight(int nbInPreviousLayer, int nbOut, int range){
+    this->weightIn.assign(nbInPreviousLayer, 0.0f);
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<float> dis(-(sqrt(6.0f) / sqrt(nbInPreviousLayer + nbOut)), (sqrt(6.0f) / sqrt(nbInPreviousLayer + nbOut)));
+    for (unsigned int i = 0; i < this->weightIn.size(); i++){
+        this->weightIn[i] = dis(gen);
+    }
 }
 
 
 
-void neurons::calculateOut(){
+float neurons::calculateOut(){
     float sum = 0;
     for(unsigned int i = 0; i < this->valueIn.size(); i++){
         sum += valueIn[i] * weightIn[i];
     }
     sum += biais;
-    if (sum > 0) this->out = 1;
-    else this->out = -1;
+    this->out = this->activation(sum);
+    return out;
 }
+
 void neurons::actualiseWeight(int trueLabel){
     if (this->out != trueLabel){
         for(unsigned int i = 0; i < this->valueIn.size(); i++){
