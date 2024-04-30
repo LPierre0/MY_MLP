@@ -38,34 +38,13 @@ void showImg(std::string pathImg, std::string predict, std::string ytrue) {
 
 
 
-void testPredict(std::vector<std::string> folders, neurons perp, std::string pathNameTest){
-    std::string predict;
-    for (const auto& folder : folders){
-        for (const auto& entry : fs::recursive_directory_iterator(pathNameTest + folder)){
-            data_t temp;
-            temp.vectorizedImg = vectorize(entry.path());
-            int pred = perp.predict(temp.vectorizedImg);
-            if (pred == 1){
-                predict = "Charmander";
-            }else{
-                predict = "Charmeleon";
-            }
-            showImg(entry.path(), predict, folder);
-        }
-    }
-}
-
-
 
 
 
 int main(){
     network net;
     net.createMlp();
-    std::vector<float> valueIn = {1.0f, 1.0f};
-    std::vector<float> out = net.forward(valueIn);
-    for(float elem : out){
-        std::cout << elem << std::endl;
-    }
-    display(net);
+    net.initWeights(100);
+    std::vector temp(160000, 0.0f);
+    net.forward(temp);
 }

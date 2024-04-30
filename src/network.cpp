@@ -1,50 +1,141 @@
 #include "neural/network.h"
 
 
-void network::addLayer(int insize, int size, int type, std::function<float(float x)> activationFunction){
+void network::addLayer(int inSize, int nbNeurons, int type, std::function<float(float x)> activationFunction){
     std::vector<neurons> layer;
-    for(int i = 0; i < size; i++){
-        neurons temp(insize, 0.0f, type, activationFunction);
+    // inSize + 1 for the biais
+    std::vector<std::vector<float>> tempLayer(nbNeurons, std::vector<float>(inSize + 1, 0.0f));
+    std::vector<float> tempOut(nbNeurons, 0.0f);
+    for(int i = 0; i < nbNeurons; i++){
+        neurons temp(inSize, 0.0f, type, activationFunction);
         layer.push_back(temp);
     }
-    layers.push_back(layer);
+    this->inValues.push_back(tempLayer);
+    this->weights.push_back(tempLayer);
+    this->outValuesActivated.push_back(tempOut);
+    this->outValuesNotActivated.push_back(tempOut);
+    this->neuronsMatrix.push_back(layer);
 }
 
 
-// This weight initialization came from the Normalized Xavier Weight Initialization.
 void network::initWeights(int range){
-    for (unsigned int i = 0; i < this->layers.size(); i++){
-        unsigned int n = layers[i][0].getValueInSize();
-        unsigned int m = layers[i].size();
-        for(unsigned int j = 0; j < this->layers[i].size(); j++){
-            this->layers[i][j].initWeight(n, m, range);
+    for (unsigned int i = 0; i < this->weights.size(); i++){
+        // For each layers
+        unsigned int nbInPreviousLayer = this->neuronsMatrix[i][0].getValueInSize();
+        unsigned int nbOut = this->neuronsMatrix[i].size();
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_real_distribution<float> dis(-(sqrt(6.0f) / sqrt(nbInPreviousLayer + nbOut)), (sqrt(6.0f) / sqrt(nbInPreviousLayer + nbOut)));
+        for(unsigned int j = 0; j < this->weights[i].size(); j++){
+            for (unsigned k = 0; k < this->weights[i][j].size(); k++){
+                this->weights[i][j][k] = dis(gen);
+            }
         }
     }
 }
 
-std::vector<std::vector<neurons>> network::getLayers(){
-    return this->layers;
+
+std::vector<std::vector<neurons>> network::getNeuronsMatrix(){
+    return this->neuronsMatrix;
 }
 
 
 void network::createMlp(){
-    this->addLayer(2, 3, PERCEPTRON, tanhFunc);
-    this->addLayer(3, 3, PERCEPTRON, tanhFunc);
+    this->addLayer(160000, 700, PERCEPTRON, tanhFunc);
+    this->addLayer(700, 30, PERCEPTRON, tanhFunc);
+    this->addLayer(30, 10, PERCEPTRON, tanhFunc);
     this->initWeights(1000);
 }
 
 
-std::vector<float> network::forward(std::vector<float> valueIn){
-    std::vector<std::vector<float>> outVector;
-    for(auto layer: layers){
-        std::vector<float> temp;
-        for(auto neuron : layer){
-            neuron.setValueIn(valueIn);
-            float out = neuron.calculateOut();
-            temp.push_back(out);
+
+
+void network::initInValue(std::vector<float> valueIn, int layerPosition){
+    for (unsigned int j = 0; j < this->inValues[layerPosition].size(); j++){
+        for(unsigned int k = 0; k < valueIn.size(); k++){
+            this->inValues[layerPosition][j][k] = valueIn[k];
         }
-        valueIn = temp;
-        outVector.push_back(temp);
+        this->inValues[layerPosition][j][valueIn.size()] = 1; // Biais
     }
-    return outVector[outVector.size() - 1];
+}
+
+void network::forward(std::vector<float> valueIn){
+    this->initInValue(valueIn, 0);
+    for(unsigned int i = 0; i < neuronsMatrix.size(); i++){
+        for(unsigned int j = 0; j < neuronsMatrix[i].size(); j++){
+            std::vector<float> temp = neuronsMatrix[i][j].calculateOut(this->weights[i][j], this->inValues[i][j]);
+            outValuesActivated[i][j] = temp[0];
+            outValuesNotActivated[i][j] = temp[1];
+        }
+        if (i < neuronsMatrix.size() - 1){
+            this->initInValue(outValuesActivated[i], i + 1);
+        }
+    }
+}
+
+
+
+
+
+
+
+/*
+void network::backwardNeurons(int i, int j){
+
+}
+void network::backward(std::vector<float> ytrue){
+    std::vector<float> prediction;
+    for(unsigned int i = 0; i < this->inValues[this->inValues.size() - 1].size(); i++){
+        prediction.push_back(softmax(this->inValues[i], i));
+    }
+    float loss = crossEntropyLoss(prediction, ytrue);
+    unsigned int outSize = this->layers.size() - 1;
+    std::cout << outSize << std::endl;
+    std::vector<float> deltaWeight;
+    for (unsigned int i = 0; i < outSize; i++){
+        //For each out
+        float temp = crossEntropyLossDerivate(prediction[i], ytrue[i]);
+        for (unsigned int j = outSize; j >= 0; j--){
+            // For each layer
+            for (unsigned int k = 0; k < layers[j].size(); k++){
+                // For each neurons
+                std::cout << i << j << k << std::endl;
+            }
+        }
+    }
+}
+*/
+
+void network::printSelf(){
+    std::cout << "Number of layers" << this->neuronsMatrix.size() << std::endl;
+    std::cout << "Affichage des poids" << std::endl;
+    for(unsigned int i = 0; i < weights.size(); i++){
+        for (unsigned int j = 0; j < weights[i].size(); j++){
+            for (unsigned int k = 0; k < weights[i][j].size(); k++){
+                std::cout << this->weights[i][j][k] << ", ";
+            }
+            std::cout << std::endl;
+        }
+        std::cout << std::endl;
+        std::cout << std::endl;
+    }
+    std::cout << "Affichage des valeurs d'entrées" << std::endl;
+    for(unsigned int i = 0; i < inValues.size(); i++){
+        for (unsigned int j = 0; j < inValues[i].size(); j++){
+            for (unsigned int k = 0; k < inValues[i][j].size(); k++){
+                std::cout << this->inValues[i][j][k] << ", ";
+            }
+            std::cout << std::endl;
+        }
+        std::cout << std::endl;
+        std::cout << std::endl;
+    }
+    std::cout << "Affichage des valeurs de sortie activé" << std::endl;
+    for(unsigned int i = 0; i < outValuesActivated.size(); i++){
+        for (unsigned int j = 0; j < outValuesActivated[i].size(); j++){
+            std::cout << this->outValuesActivated[i][j] << ", ";
+            std::cout << std::endl;
+        }
+        std::cout << std::endl;
+    }
 }

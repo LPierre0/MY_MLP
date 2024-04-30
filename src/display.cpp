@@ -3,7 +3,7 @@
 
 NeuronVisualizer::NeuronVisualizer(int windowWidth, int windowHeight, network net) : window(sf::VideoMode(windowWidth, windowHeight), "Neuron Visualizer") {
     this->net = net;
-    std::vector<std::vector<neurons>> layers = net.getLayers();
+    std::vector<std::vector<neurons>> layers = net.getNeuronsMatrix();
     s = "1";
     neuronsCircle.resize(layers.size());
     for (unsigned int i = 0; i < layers.size(); i++) {
@@ -85,7 +85,7 @@ void NeuronVisualizer::run() {
             }
         }
         window.clear(sf::Color::White);
-        std::vector<std::vector<neurons>> layers = net.getLayers();
+        std::vector<std::vector<neurons>> layers = net.getNeuronsMatrix();
         for (unsigned int i = 0; i < layers.size(); i++){
             for(unsigned int j = 0; j < layers[i].size(); j++){
                 window.draw(neuronsCircle[i][j]);
@@ -106,7 +106,7 @@ void NeuronVisualizer::run() {
             sf::FloatRect textRect = textWeight.getLocalBounds();
             textWeight.setOrigin(textRect.left + textRect.width / 2.f, textRect.top + textRect.height / 2.f);
             textWeight.setPosition(middle);
-            window.draw(textWeight);
+            //window.draw(textWeight);
             window.draw(line, 2, sf::Lines);
 
         }

@@ -5,38 +5,16 @@ neurons::neurons(unsigned int valueInSize, float biais, int type, std::function<
     this->setBiais(biais);
     this->setNeuronsType(type);
     this->setFunction(activation);
-    this->out = 0.0f;
+    this->outActivation = 0.0f;
+    this->outSum = 0.0f;
 }
 
 // TODO: Paralléliser
 
-void neurons::train(std::vector<data_t> dataLabelled){
-    int nbIter = 0;
-    int goodLabelsCount = 0;
-    while (goodLabelsCount < dataLabelled.size() - 1 && nbIter < 100){
-        goodLabelsCount = 0;
-        std::vector<unsigned int> indicesTab = createShuffledIndices(dataLabelled.size());
-        for(unsigned int i = 0; i < indicesTab.size(); i++){
-            int indices = indicesTab[i];
-            this->valueIn = dataLabelled[indices].vectorizedImg;
-            this->calculateOut();
-            if (this->out != dataLabelled[indices].label) this->actualiseWeight(dataLabelled[indices].label);
-            else goodLabelsCount++;
-        }
-        nbIter++;
-    }
-}
-
-int neurons::predict(std::vector<float> vecToPred){
-    this->valueIn = vecToPred;
-    this->calculateOut();
-    return this->out;
-}
-
 void neurons::printSelf(){
     std::cout << std::endl << "AFFICHAGE DU NEURONNE" << std::endl;
     std::cout << "Value of biais : " << biais << std::endl;
-    std::cout << "Value out : " << out << std::endl;
+    std::cout << "Value out : " << outActivation << std::endl;
     std::cout << "Type : " << neuronsType << std::endl;
     std::cout << "Weight in : ";
     printVectorFloat(this->weightIn);
@@ -49,7 +27,7 @@ void neurons::printSelf(){
 // SETTERS
 
 void neurons::setOut(int o){
-    this->out = o;
+    this->outActivation = o;
 }
 
 void neurons::setValueIn(std::vector<float> i){
@@ -80,8 +58,8 @@ void neurons::setFunction(std::function<float(float x)> function){
 }
 
 // GETTERS
-float neurons::getOut(){
-    return this->out;
+float neurons::getOutActivation(){
+    return this->outActivation;
 }
 
 int neurons::getNeuronsType(){
@@ -117,18 +95,17 @@ void neurons::initWeight(int nbInPreviousLayer, int nbOut, int range){
 
 
 
-float neurons::calculateOut(){
-    float sum = 0;
-    for(unsigned int i = 0; i < this->valueIn.size(); i++){
-        sum += valueIn[i] * weightIn[i];
+std::vector<float> neurons::calculateOut(std::vector<float> weights, std::vector<float> values){
+    this->outSum = 0;
+    for(unsigned int i = 0; i < values.size(); i++){
+        this->outSum += values[i] * weights[i];
     }
-    sum += biais;
-    this->out = this->activation(sum);
-    return out;
+    this->outActivation = this->activation(this->outSum);
+    return {this->outActivation, this->outSum};
 }
 
 void neurons::actualiseWeight(int trueLabel){
-    if (this->out != trueLabel){
+    if (this->outActivation != trueLabel){
         for(unsigned int i = 0; i < this->valueIn.size(); i++){
             this->weightIn[i] = this->weightIn[i] + trueLabel * valueIn[i];
         }

@@ -10,14 +10,31 @@
 
 class network {
     public : 
-        void addLayer(int insize, int size, int type, std::function<float(float x)> activationFunction);
+        void addLayer(int inSize, int nbNeurons, int type, std::function<float(float x)> activationFunction);
         void initWeights(int range);
-        std::vector<float> forward(std::vector<float> valueIn);
-        std::vector<std::vector<neurons>> getLayers();
+
+        void forward(std::vector<float> valueIn);
+        void backward(std::vector<float> ytrue);
+        void backwardNeurons(int i, int j);
+        std::vector<std::vector<neurons>> getNeuronsMatrix();
+
+
         void createMlp();
+        void printSelf();
     private :
-        std::vector<std::vector<neurons>> layers;
-        std::vector<std::vector<float>> weights;
+        void initInValue(std::vector<float> valueIn, int layerPosition);
+        std::vector<std::vector<neurons>> neuronsMatrix;
+        // neuronsMatrix : Objet neurons J for the Layer I 
+
+        std::vector<std::vector<std::vector<float>>> weights;
+        // Weights : I = layer, J = neurons, K = K weights in of neuron.
+
+        std::vector<std::vector<std::vector<float>>> inValues;
+        // inValues : I = Layer, J = neurons, K = value in For the weight k
+
+        std::vector<std::vector<float>> outValuesActivated;
+        std::vector<std::vector<float>> outValuesNotActivated;
+        // outValues : I = Layer, J = neurons
 };
 
 

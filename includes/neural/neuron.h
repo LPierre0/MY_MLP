@@ -16,8 +16,6 @@ class neurons {
     public : 
         
         neurons(unsigned int dataSize, float biais, int type, std::function<float(float x)> activation);
-        void train(std::vector<data_t> dataLabelled);
-        int predict(std::vector<float> vecToPred);
         void printSelf();
 
         void setOut(int outToSet);
@@ -28,18 +26,19 @@ class neurons {
         void setValueInSize(unsigned int valueInSize);
         void setFunction(std::function<float(float x)> activation);
 
-        float getOut();
+        float getOutSum();
+        float getOutActivation();
         int getNeuronsType();
         float getBiais();
         std::vector<float> getValueIn();
         std::vector<float> getWeightIn();
         unsigned int getValueInSize();
         void initWeight(int n, int m, int range);
-        float calculateOut();
+        std::vector<float> calculateOut(std::vector<float> weights, std::vector<float> values);
 
     private :
-
-        float out;
+        float outSum;
+        float outActivation;
         int neuronsType; 
         unsigned int valueInSize;
         float biais;
