@@ -17,16 +17,19 @@ class network {
         void backward(std::vector<float> ytrue);
         void backwardNeurons(int i, int j);
         std::vector<std::vector<neurons>> getNeuronsMatrix();
-
-
+        void calculateSoftmax();
+        float softmaxDerivate(unsigned int neuronIndex);
         void createMlp();
         void printSelf();
     private :
         void initInValue(std::vector<float> valueIn, int layerPosition);
+        float calculateDeltaWeight(int i, int j);
         std::vector<std::vector<neurons>> neuronsMatrix;
         // neuronsMatrix : Objet neurons J for the Layer I 
 
         std::vector<std::vector<std::vector<float>>> weights;
+        std::vector<std::vector<std::vector<float>>> deltaWeights;
+        std::vector<float> ytrue;
         // Weights : I = layer, J = neurons, K = K weights in of neuron.
 
         std::vector<std::vector<std::vector<float>>> inValues;
@@ -35,6 +38,7 @@ class network {
         std::vector<std::vector<float>> outValuesActivated;
         std::vector<std::vector<float>> outValuesNotActivated;
         // outValues : I = Layer, J = neurons
+        std::vector<float> outSoftmaxed;
 };
 
 

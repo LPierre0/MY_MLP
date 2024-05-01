@@ -41,9 +41,8 @@ std::vector<std::vector<neurons>> network::getNeuronsMatrix(){
 
 
 void network::createMlp(){
-    this->addLayer(160000, 700, PERCEPTRON, tanhFunc);
-    this->addLayer(700, 30, PERCEPTRON, tanhFunc);
-    this->addLayer(30, 10, PERCEPTRON, tanhFunc);
+    this->addLayer(160000, 200, PERCEPTRON, tanhFunc);
+    this->addLayer(200, 151, PERCEPTRON, tanhFunc);
     this->initWeights(1000);
 }
 
@@ -71,40 +70,91 @@ void network::forward(std::vector<float> valueIn){
             this->initInValue(outValuesActivated[i], i + 1);
         }
     }
+    this->calculateSoftmax();
 }
 
 
 
 
 
+void network::calculateSoftmax(){
+    unsigned int lastLayer = this->outValuesActivated.size() - 1;
+    for (unsigned int i = 0; i < this->outValuesActivated[lastLayer].size(); i++){
+        this->outSoftmaxed.push_back(softmax(this->outValuesActivated[lastLayer], i));
+    }
+}
+
+std::vector<std::vector<std::vector<float>>> initDeltaWeight(std::vector<std::vector<std::vector<float>>> weights){
+    std::vector<std::vector<std::vector<float>>> deltaWeights;
+    for (const auto& layer : weights) {
+        std::vector<std::vector<float>> deltaLayer;
+        for (const auto& row : layer) {
+            std::vector<float> deltaRow(row.size(), 0.0f);
+            deltaLayer.push_back(deltaRow);
+        }
+        deltaWeights.push_back(deltaLayer);
+    }
+
+    return deltaWeights;
+}
 
 
-/*
-void network::backwardNeurons(int i, int j){
+float network::softmaxDerivate(unsigned int neuronIndex){
+    float softmax_neuron = outSoftmaxed[neuronIndex];
+    return softmax_neuron * (1.0f - softmax_neuron);
+}
 
+
+float network::calculateDeltaWeight(int i, int j){
+    if (i == this->neuronsMatrix.size() - 1){
+        float temp = crossEntropyLossDerivate(this->outSoftmaxed[i], ytrue[i]);
+        temp = temp * tanhFuncDerivate(this->outValuesNotActivated[i][j]);
+        temp = temp * this->softmaxDerivate(j);
+        for(unsigned int k = 0; k < this->weights[i][j].size(); k++){
+            this->deltaWeights[i][j][k] = temp * inValues[i][j][k];
+        }
+        return temp;
+    }else{
+        float sum = 0.0f;
+        for (unsigned int LayerNextPos = 0;  LayerNextPos < neuronsMatrix[i + 1].size(); LayerNextPos++){
+            sum += weights[i + 1][LayerNextPos][j] * tanhFuncDerivate(outValuesNotActivated[i + 1][LayerNextPos]) * calculateDeltaWeight(i + 1, LayerNextPos);
+        }
+        for(unsigned int k = 0; k < weights[i][j].size(); k++){
+            deltaWeights[i][j][k] = inValues[i][j][k] * tanhFuncDerivate(outValuesNotActivated[i][j]) * sum;
+        }
+        return sum;
+    }
+}
+
+void displayDeltaWeights(const std::vector<std::vector<std::vector<float>>>& deltaWeights) {
+    // Parcourir chaque couche de poids
+    for (size_t i = 0; i < deltaWeights.size(); ++i) {
+        std::cout << "Layer " << i << ":\n";
+
+        // Parcourir chaque ligne dans une couche de poids
+        for (size_t j = 0; j < deltaWeights[i].size(); ++j) {
+            // Afficher la ligne
+            std::cout << "Row " << j << ": [";
+            for (size_t k = 0; k < deltaWeights[i][j].size(); ++k) {
+                std::cout << deltaWeights[i][j][k];
+                if (k != deltaWeights[i][j].size() - 1)
+                    std::cout << ", ";
+            }
+            std::cout << "]\n";
+        }
+        std::cout << "\n";
+    }
 }
 void network::backward(std::vector<float> ytrue){
-    std::vector<float> prediction;
-    for(unsigned int i = 0; i < this->inValues[this->inValues.size() - 1].size(); i++){
-        prediction.push_back(softmax(this->inValues[i], i));
-    }
-    float loss = crossEntropyLoss(prediction, ytrue);
-    unsigned int outSize = this->layers.size() - 1;
-    std::cout << outSize << std::endl;
-    std::vector<float> deltaWeight;
-    for (unsigned int i = 0; i < outSize; i++){
-        //For each out
-        float temp = crossEntropyLossDerivate(prediction[i], ytrue[i]);
-        for (unsigned int j = outSize; j >= 0; j--){
-            // For each layer
-            for (unsigned int k = 0; k < layers[j].size(); k++){
-                // For each neurons
-                std::cout << i << j << k << std::endl;
-            }
-        }
+    this->ytrue = ytrue;
+    unsigned int lastLayerPos = this->neuronsMatrix.size() - 1;
+    this->deltaWeights = initDeltaWeight(this->weights);
+    for (unsigned int j = 0; j < this->neuronsMatrix[0].size(); j++){
+        this->calculateDeltaWeight(0, j);
     }
 }
-*/
+
+
 
 void network::printSelf(){
     std::cout << "Number of layers" << this->neuronsMatrix.size() << std::endl;

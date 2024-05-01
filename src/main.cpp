@@ -45,6 +45,9 @@ int main(){
     network net;
     net.createMlp();
     net.initWeights(100);
-    std::vector temp(160000, 0.0f);
+    std::vector temp(160000, 1.0f);
     net.forward(temp);
+    std::vector tempy(151, 0.0f);
+    tempy[1] = 1.0f;
+    net.backward(tempy);
 }

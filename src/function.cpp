@@ -50,6 +50,6 @@ float crossEntropyLoss(std::vector<float> predictionSoftmax, std::vector<float> 
     return loss;
 }
 
-float crossEntropyLossDerivate(float predictionSoftmax, float ypred){
-    return (-ypred) * (1 - predictionSoftmax);
+float crossEntropyLossDerivate(float predictionSoftmax, float ytrue){
+    return predictionSoftmax - ytrue;
 }
