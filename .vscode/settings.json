@@ -126,6 +126,11 @@
     "typeindex": "cpp",
     "valarray": "cpp",
     "variant": "cpp",
-    "filesystem": "cpp"
+    "filesystem": "cpp",
+    "charconv": "cpp",
+    "shared_mutex": "cpp",
+    "span": "cpp",
+    "format": "cpp",
+    "__nullptr": "cpp"
   }
 }
