@@ -1,5 +1,0 @@
-/home/pierre/Projects/MY_MLP/build/CMakeFiles/neural.dir
-/home/pierre/Projects/MY_MLP/build/CMakeFiles/test.dir
-/home/pierre/Projects/MY_MLP/build/CMakeFiles/clean-project.dir
-/home/pierre/Projects/MY_MLP/build/CMakeFiles/edit_cache.dir
-/home/pierre/Projects/MY_MLP/build/CMakeFiles/rebuild_cache.dir
