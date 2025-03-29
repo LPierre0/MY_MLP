@@ -14,6 +14,8 @@ class Network{
 
         void forward(std::vector<float> in);
         void set_weights(std::vector<float> w, size_t indice);
+        void init_weights();
+        void init_biais();
 
 
     private:

@@ -25,6 +25,8 @@ int test_map(){
 }
 
 int main(){
-    test_map();
+    float r = (float)(rand()) / (float)(RAND_MAX);
+
+    std::cout << r << std::endl;
     return 0;
 }

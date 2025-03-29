@@ -17,6 +17,8 @@ class Matrix{
   
 
         Matrix operator*(const Matrix& matrix);
+        Matrix operator*(const float& value);
+
         Matrix operator+(const Matrix& matrix);
         Matrix operator/(const float& value);
         Matrix map(float (*f)(float));
@@ -30,6 +32,7 @@ class Matrix{
         float max();
         float min();
         float sum();
+        size_t get_size();
 
 
     private:

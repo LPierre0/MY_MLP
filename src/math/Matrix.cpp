@@ -19,7 +19,7 @@ size_t Matrix::matrix_nb_col(){
 Matrix Matrix::map(float (*f)(float)){
     Matrix out = Matrix(this->nb_row, this->nb_col, 0.0f);
 
-    for (size_t i = 0; i < this->nb_row * this->nb_col; i++){
+    for (size_t i = 0; i < this->get_size(); i++){
         out.my_matrix[i] = f(this->my_matrix[i]);
     }
     return out;
@@ -65,15 +65,25 @@ Matrix Matrix::operator+(Matrix const& matrix){
 
 Matrix Matrix::operator/(const float& value){
     Matrix out = Matrix(this->nb_row, this->nb_col, 0.0f);
-    
+
     if (value == 0.0f) {
         throw std::invalid_argument("Division by zero is not allowed.");
     }
-    for (size_t i = 0; i < out.my_matrix.size(); i++){
+    for (size_t i = 0; i < out.get_size(); i++){
         out.my_matrix[i] = this->my_matrix[i] / value;
     }
     return out;
 }
+
+Matrix Matrix::operator*(const float& value){
+    Matrix out = Matrix(this->nb_row, this->nb_col, 0.0f);
+
+    for (size_t i = 0; i < out.get_size(); i++){
+        out.my_matrix[i] = this->my_matrix[i] * value;
+    }
+    return out;
+}
+
 
 
 void Matrix::set_value(std::vector<float> values){
@@ -120,6 +130,10 @@ float Matrix::sum(){
         sum += elem;
     }
     return sum;
+}
+
+size_t Matrix::get_size(){
+    return this->nb_row * this->nb_col;
 }
 
 std::ostream& operator<<(std::ostream& os, const Matrix& matrix)
