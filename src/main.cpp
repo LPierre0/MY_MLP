@@ -1,8 +1,11 @@
-#include "Matrix.hpp"
+#include "Network.hpp"
 
 int main(){
-    Matrix my_matrix_1 = Matrix(2000, 2000, 1.0f);
-    Matrix my_matrix_2 = Matrix(2000, 2000, 1.0f);
+    Network network = Network(6, 2, 4, 2);
+    std::cout << network << std::endl;
 
-    Matrix my_matrix_3 = my_matrix_1 * my_matrix_2;
+    network.forward({1.0f, 2.0f, 0.0f, 1.0f, 1.0f, 2.0f});
+
+    std::cout << "--------FORWARD------------\n\n" << std::endl;
+    std::cout << network << std::endl;
 }
