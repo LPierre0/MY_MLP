@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.0)
 project(NeuralNetwork)
 
 set(SOURCES 
-    src/Neuron.cpp
+    src/linear_algebra/Matrix.cpp
 )
 
 set(SOURCES_MAIN
