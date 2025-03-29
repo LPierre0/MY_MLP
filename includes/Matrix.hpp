@@ -18,12 +18,19 @@ class Matrix{
 
         Matrix operator*(const Matrix& matrix);
         Matrix operator+(const Matrix& matrix);
+        Matrix operator/(const float& value);
+        Matrix map(float (*f)(float));
 
 
         size_t matrix_nb_row();
         size_t matrix_nb_col();
     
         void set_value(std::vector<float> values);
+        float mean();
+        float max();
+        float min();
+        float sum();
+
 
     private:
         size_t nb_row;

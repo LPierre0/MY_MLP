@@ -3,8 +3,9 @@ cmake_minimum_required(VERSION 3.0)
 project(NeuralNetwork)
 
 set(SOURCES 
-    src/linear_algebra/Matrix.cpp
+    src/math/Matrix.cpp
     src/Network.cpp
+    src/math/Function.cpp
 )
 
 set(SOURCES_MAIN
@@ -12,6 +13,10 @@ set(SOURCES_MAIN
     src/main.cpp
 )
 
+set(SOURCES_TEST
+    ${SOURCES}
+    src/test.cpp
+)
 
 
 add_executable(neural ${SOURCES_MAIN})
@@ -21,6 +26,13 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 target_link_libraries(neural ${OpenCV_LIBS})
 target_include_directories(neural PUBLIC includes)
 
+
+add_executable(test ${SOURCES_TEST})
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
+
+target_link_libraries(test ${OpenCV_LIBS})
+target_include_directories(test PUBLIC includes)
 
 
 set(CMAKE_BUILD_TYPE Release)

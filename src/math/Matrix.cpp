@@ -16,6 +16,16 @@ size_t Matrix::matrix_nb_col(){
 }
 
 
+Matrix Matrix::map(float (*f)(float)){
+    Matrix out = Matrix(this->nb_row, this->nb_col, 0.0f);
+
+    for (size_t i = 0; i < this->nb_row * this->nb_col; i++){
+        out.my_matrix[i] = f(this->my_matrix[i]);
+    }
+    return out;
+}
+
+
 Matrix Matrix::operator*(Matrix const& matrix){
     if (this->nb_col != matrix.nb_row){
         throw std::invalid_argument("Matrix must have the good size to be multiplacte");
@@ -53,6 +63,18 @@ Matrix Matrix::operator+(Matrix const& matrix){
 }
 
 
+Matrix Matrix::operator/(const float& value){
+    Matrix out = Matrix(this->nb_row, this->nb_col, 0.0f);
+    
+    if (value == 0.0f) {
+        throw std::invalid_argument("Division by zero is not allowed.");
+    }
+    for (size_t i = 0; i < out.my_matrix.size(); i++){
+        out.my_matrix[i] = this->my_matrix[i] / value;
+    }
+    return out;
+}
+
 
 void Matrix::set_value(std::vector<float> values){
     if (values.size() != this->nb_col * this->nb_row){
@@ -62,6 +84,43 @@ void Matrix::set_value(std::vector<float> values){
 }
 
 
+
+float Matrix::max(){
+    float max = -1000000;
+    for (float& elem : this->my_matrix){
+        if (elem > max){
+            max = elem;
+        }
+    }
+    return max;
+}
+
+
+float Matrix::min(){
+    float min = 1000000000;
+    for (float& elem : this->my_matrix){
+        if (elem < min){
+            min = elem;
+        }
+    }
+    return min;
+}
+
+float Matrix::mean(){
+    float mean = 0;
+    for (float& elem : this->my_matrix){
+        mean += elem;
+    }
+    return mean / this->my_matrix.size();
+}
+
+float Matrix::sum(){
+    float sum = 0;
+    for (float& elem : this->my_matrix){
+        sum += elem;
+    }
+    return sum;
+}
 
 std::ostream& operator<<(std::ostream& os, const Matrix& matrix)
 {
