@@ -1,12 +1,11 @@
 #include "Network.hpp"
 
 
-Network::Network(size_t input_size, size_t nb_hidden_layer, size_t nb_neurons, size_t output_size)
-:input_size(input_size), nb_hidden_layer(nb_hidden_layer), nb_neurons(nb_neurons), output_size(output_size){
+Network::Network(size_t input_size, size_t nb_hidden_layer, size_t nb_neurons, size_t output_size, float learning_rate)
+:input_size(input_size), nb_hidden_layer(nb_hidden_layer), nb_neurons(nb_neurons), output_size(output_size), learning_rate(learning_rate){
     weights.push_back(he_weights_init(nb_neurons, input_size));
     biais.push_back(Matrix(nb_neurons, 1, 0.0f));
     input = Matrix(input_size, 1, 0.0f);
-    nabla_layer.push_back(Matrix(input_size, 1, 0.0f));
 
     for (size_t i = 0; i < nb_hidden_layer - 1; i++){
         weights.push_back(he_weights_init(nb_neurons, nb_neurons));
@@ -83,7 +82,6 @@ void Network::forward(std::vector<float> in){
     pre_activation_layer[0] = weights[0] * input + biais[0];
     activated_layer[0] = pre_activation_layer[0].map(relu);
     for (size_t i = 1; i < pre_activation_layer.size(); i++){
-        std::cout << i << std::endl;
         pre_activation_layer[i] =  weights[i] * activated_layer[i - 1] + biais[i];
         activated_layer[i] = pre_activation_layer[i].map(relu);
     }
@@ -165,13 +163,17 @@ void Network::compute_backpropagation(Matrix y_true){
     size_t nb_layer = this->nabla_layer.size();
     this->nabla_layer[nb_layer - 1] = cross_entropy_derivative(this->softmaxed_output, y_true);
 
-    for (size_t l = nb_layer - 2; l > 0; l--){
-        std::cout << l << std::endl;
-        std::cout << this->nabla_layer[l+1].matrix_nb_row() << "," << this->nabla_layer[l+1].matrix_nb_col() << std::endl;
-        std::cout << this->pre_activation_layer[l-1] << std::endl;
-        std::cout << this->weights[l].transpose() << std::endl;
-
-        this->nabla_layer[l] = (this->weights[l].transpose() * this->nabla_layer[l+1]).hadamard(relu_derivate(this->pre_activation_layer[l-1]));
+    for (int l = nb_layer - 2; l >= 0; l--){
+        this->nabla_layer[l] = (this->weights[l + 1].transpose() * this->nabla_layer[l+1]).hadamard(relu_derivate(this->pre_activation_layer[l]));
     }
-    this->nabla_layer[0] = (this->weights[0].transpose() * this->nabla_layer[1]).hadamard(relu_derivate(this->input));
+
+    for (size_t l = 0; l < this->weights.size(); l++){
+        for (size_t i = 0 ; i < this->weights[l].matrix_nb_row(); i++){
+            for (size_t j = 0; j < this->weights[l].matrix_nb_col(); j++){
+                float a = (l == 0 ? input.my_matrix[i * input.matrix_nb_col() + j] : this->activated_layer[l - 1].my_matrix[i * this->activated_layer[l - 1].matrix_nb_col() + j]);
+                this->weights[l].my_matrix[i * this->weights[l].matrix_nb_col() + j] -= (a * nabla_layer[l].my_matrix[i]) * learning_rate;
+            }
+            this->biais[l].my_matrix[i] -= (nabla_layer[l].my_matrix[i]) * learning_rate;
+        }
+    }
 }

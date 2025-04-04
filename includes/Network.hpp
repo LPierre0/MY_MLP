@@ -11,7 +11,7 @@
 class Network{
 
     public:
-        Network(size_t input_size, size_t nb_hidden_layer, size_t nb_neurons, size_t output_size);
+        Network(size_t input_size, size_t nb_hidden_layer, size_t nb_neurons, size_t output_size, float learning_rate = 0.01f);
         friend std::ostream& operator<<(std::ostream& os, const Network& network); 
 
         void forward(std::vector<float> in);
@@ -23,6 +23,8 @@ class Network{
 
         Matrix get_softmaxed_output();
         
+
+        float learning_rate;
         size_t input_size;
         size_t nb_hidden_layer;
         size_t nb_neurons;
