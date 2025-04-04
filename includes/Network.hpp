@@ -2,9 +2,11 @@
 #define NETWORK_HPP
 
 #include <vector>
-#include<iostream>
+#include <iostream>
+#include <fstream>
 #include "Matrix.hpp"
 #include "Function.hpp"
+
 
 class Network{
 
@@ -14,11 +16,13 @@ class Network{
 
         void forward(std::vector<float> in);
         void set_weights(std::vector<float> w, size_t indice);
-        void init_weights();
-        void init_biais();
+        void save(std::string file_path);
+        void load(std::string file_path);
+        void compute_backpropagation(Matrix y_true);
 
 
-    private:
+        Matrix get_softmaxed_output();
+        
         size_t input_size;
         size_t nb_hidden_layer;
         size_t nb_neurons;
@@ -28,9 +32,13 @@ class Network{
         std::vector<Matrix> biais;
         std::vector<Matrix> pre_activation_layer;
         std::vector<Matrix> activated_layer;
+        std::vector<Matrix> nabla_layer;
         Matrix output;
         Matrix softmaxed_output;
         Matrix input;
+        
+
+    private:
 
 
 

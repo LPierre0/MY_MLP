@@ -6,8 +6,12 @@ float relu(float x){
 }
 
 
-float relu_derivate(float x){
-    return (x > 0 ? 1 : 0);
+Matrix relu_derivate(Matrix z){
+    Matrix out = Matrix(z.matrix_nb_row(), z.matrix_nb_col(), 0.0f);
+    for (size_t i = 0; i < out.get_size(); i++){
+        out.my_matrix[i] = (z.my_matrix[i] > 0 ? 1 : 0);
+    }
+    return out;
 }
 
 float my_exp(float x){
@@ -34,4 +38,19 @@ Matrix generate_random_matrix(size_t nb_row, size_t nb_col){
 
 Matrix he_weights_init(size_t nb_row, size_t nb_col){
     return generate_random_matrix(nb_row, nb_col) * sqrt(2.0 / nb_col);
+}
+
+
+float cross_entropy(Matrix softmaxed_output, Matrix true_value){
+    float loss = 0.0f;
+    size_t N = softmaxed_output.get_size();
+    for (size_t i = 0; i < N; i++){
+        loss += true_value.my_matrix[i] * log(softmaxed_output.my_matrix[i] + 10e-8);
+    }
+    return loss * (-1);
+}
+
+
+Matrix cross_entropy_derivative(Matrix softmaxed_output, Matrix true_value){
+    return softmaxed_output - true_value;
 }

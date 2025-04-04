@@ -20,8 +20,12 @@ class Matrix{
         Matrix operator*(const float& value);
 
         Matrix operator+(const Matrix& matrix);
+        Matrix operator-(Matrix const& matrix);
         Matrix operator/(const float& value);
+        Matrix hadamard(const Matrix & matrix);
         Matrix map(float (*f)(float));
+        Matrix transpose();
+
 
 
         size_t matrix_nb_row();

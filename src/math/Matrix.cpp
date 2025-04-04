@@ -62,6 +62,20 @@ Matrix Matrix::operator+(Matrix const& matrix){
     return out;
 }
 
+Matrix Matrix::operator-(Matrix const& matrix){
+    if (this->nb_col != matrix.nb_col || this->nb_row != matrix.nb_row){
+        throw std::invalid_argument("Matrix must have the good size to be additionate");
+    }
+    Matrix out = Matrix(this->nb_row, this->nb_col, 0.0f);
+
+    for (size_t i = 0; i < out.nb_row; i++){
+        for (size_t j = 0; j < out.nb_col; j++){
+            out.my_matrix[i * out.nb_col + j] = this->my_matrix[i * out.nb_col + j] - matrix.my_matrix[i * out.nb_col + j];
+        }
+    }
+    return out;
+}
+
 
 Matrix Matrix::operator/(const float& value){
     Matrix out = Matrix(this->nb_row, this->nb_col, 0.0f);
@@ -84,6 +98,17 @@ Matrix Matrix::operator*(const float& value){
     return out;
 }
 
+Matrix Matrix::hadamard(const Matrix& matrix){
+    if (this->nb_row != matrix.nb_row or this->nb_col != matrix.nb_col){
+        throw std::invalid_argument("Matrix must have the same shape for hadamard product");
+    }
+
+    Matrix out = Matrix(this->nb_row, this->nb_col, 0.0f);
+    for (size_t i = 0; i < this->get_size(); i++){
+        out.my_matrix[i] = this->my_matrix[i] * matrix.my_matrix[i];
+    }
+    return out;
+}
 
 
 void Matrix::set_value(std::vector<float> values){
@@ -132,6 +157,17 @@ float Matrix::sum(){
     return sum;
 }
 
+Matrix Matrix::transpose(){
+    Matrix out(this->nb_col, this->nb_row, 0.0f);
+
+    for (size_t i = 0; i < out.nb_row; i++){
+        for (size_t j = 0; j < out.nb_col; j++){
+            out.my_matrix[i * out.nb_col + j] = this->my_matrix[j * out.nb_row + i];
+        }
+    }
+    return out;
+}
+
 size_t Matrix::get_size(){
     return this->nb_row * this->nb_col;
 }
@@ -149,4 +185,6 @@ std::ostream& operator<<(std::ostream& os, const Matrix& matrix)
     }
     return os;
 }
+
+
 
