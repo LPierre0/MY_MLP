@@ -52,7 +52,7 @@ std::vector<std::vector<float>> clean_labels(std::vector<uint8_t> labels, int nb
 
 void test_mnist(){
     Network network(784, 2, 128, 10, 0.01);
-    ImageLoader imload("/home/pierre/Projects/MY_MLP/data/train-images-idx3-ubyte/train-images-idx3-ubyte", "/home/pierre/Projects/MY_MLP/data/train-labels-idx1-ubyte/train-labels-idx1-ubyte");
+    ImageLoader imload("../data/train-images-idx3-ubyte/train-images-idx3-ubyte", "../data/train-labels-idx1-ubyte/train-labels-idx1-ubyte");
     std::vector<std::vector<float>> images_cleaned = clean_images(imload.images);
     std::vector<std::vector<float>> labels_cleaned = clean_labels(imload.labels, 10);
 
@@ -63,7 +63,7 @@ void test_mnist(){
         network.compute_backpropagation(labels_cleaned[i]);
     }
 
-    ImageLoader imload_test("/home/pierre/Projects/MY_MLP/data/t10k-images.idx3-ubyte", "/home/pierre/Projects/MY_MLP/data/t10k-labels.idx1-ubyte");
+    ImageLoader imload_test("../data/t10k-images.idx3-ubyte", "../data/t10k-labels.idx1-ubyte");
     std::vector<std::vector<float>> images_cleaned_test = clean_images(imload_test.images);
 
     std::vector<float> true_pos(10, 0.0f);
