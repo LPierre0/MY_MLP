@@ -22,6 +22,7 @@ Network::Network(size_t input_size, size_t nb_hidden_layer, size_t nb_neurons, s
     weights.push_back(he_weights_init(output_size, nb_neurons));
     biais.push_back(Matrix(output_size, 1, 0.0f)); 
     output = Matrix(output_size, 1, 0.0f);
+    y_true = Matrix(output_size, 1, 0.0f);
     softmaxed_output = Matrix(output_size, 1, 0.0f);
 }
 
@@ -159,7 +160,8 @@ Matrix Network::get_softmaxed_output(){
     return this->softmaxed_output;
 }
 
-void Network::compute_backpropagation(Matrix y_true){
+void Network::compute_backpropagation(std::vector<float> y_true_vector){
+    y_true.set_value(y_true_vector);
     size_t nb_layer = this->nabla_layer.size();
     this->nabla_layer[nb_layer - 1] = cross_entropy_derivative(this->softmaxed_output, y_true);
 

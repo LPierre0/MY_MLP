@@ -18,7 +18,7 @@ class Network{
         void set_weights(std::vector<float> w, size_t indice);
         void save(std::string file_path);
         void load(std::string file_path);
-        void compute_backpropagation(Matrix y_true);
+        void compute_backpropagation(std::vector<float> y_true_vector);
 
 
         Matrix get_softmaxed_output();
@@ -38,6 +38,7 @@ class Network{
         Matrix output;
         Matrix softmaxed_output;
         Matrix input;
+        Matrix y_true;
         
 
     private:

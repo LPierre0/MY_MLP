@@ -6,6 +6,7 @@ set(SOURCES
     src/math/Matrix.cpp
     src/Network.cpp
     src/math/Function.cpp
+    src/loader/ImageLoader.cpp
 )
 
 set(SOURCES_MAIN
