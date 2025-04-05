@@ -57,6 +57,8 @@ Make sure you have the following installed:
     ```
     ./neural
     ```
+   The program will train the MLP and output the accuracy of the network on the MNIST dataset.
+
 
 4. **Comparaison with tensorflow**
 
