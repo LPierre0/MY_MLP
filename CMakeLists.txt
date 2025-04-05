@@ -22,9 +22,6 @@ set(SOURCES_TEST
 add_executable(neural ${SOURCES_MAIN})
 target_include_directories(neural PUBLIC includes)
 
-add_executable(test ${SOURCES_TEST})
-target_include_directories(test PUBLIC includes)
-
 set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -march=native")
