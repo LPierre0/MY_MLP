@@ -14,9 +14,10 @@ Matrix relu_derivate(Matrix z){
     return out;
 }
 
-float my_exp(float x){
-    float ret = (float)exp(1.0/0.8 * x);
-    return ret;
+float my_exp(float x) {
+    if (x > 88.0f) return std::numeric_limits<float>::max(); // exp(88) ≈ 1e38
+    if (x < -100.0f) return 0.0f;
+    return std::exp(x);
 }
 
 

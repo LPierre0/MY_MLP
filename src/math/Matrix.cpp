@@ -89,6 +89,16 @@ Matrix Matrix::operator/(const float& value){
     return out;
 }
 
+
+Matrix Matrix::operator-(const float& value){
+    Matrix out = Matrix(this->nb_row, this->nb_col, 0.0f);
+
+    for (size_t i = 0; i < out.get_size(); i++){
+        out.my_matrix[i] = this->my_matrix[i] - value;
+    }
+    return out;
+}
+
 Matrix Matrix::operator*(const float& value){
     Matrix out = Matrix(this->nb_row, this->nb_col, 0.0f);
 
@@ -168,6 +178,18 @@ Matrix Matrix::transpose(){
     return out;
 }
 
+int Matrix::ind_max(){
+    float max = 0.0f;
+    int ind_max = 0;
+    for (size_t i = 0; i < this->get_size(); i++){
+        if (my_matrix[i] > max){
+            max = my_matrix[i];
+            ind_max = i;
+        }
+    }
+    return ind_max;
+}
+
 size_t Matrix::get_size(){
     return this->nb_row * this->nb_col;
 }
@@ -185,6 +207,7 @@ std::ostream& operator<<(std::ostream& os, const Matrix& matrix)
     }
     return os;
 }
+
 
 
 

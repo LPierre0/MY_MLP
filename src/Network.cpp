@@ -87,7 +87,15 @@ void Network::forward(std::vector<float> in){
         activated_layer[i] = pre_activation_layer[i].map(relu);
     }
     output = weights[weights.size() - 1] * activated_layer[activated_layer.size() - 1] + biais[biais.size() - 1];
-    softmaxed_output = output.map(my_exp);
+    float max = output.max();
+    softmaxed_output = output;
+    softmaxed_output = softmaxed_output - max;
+    softmaxed_output = softmaxed_output.map(my_exp);
+    float sum = softmaxed_output.sum();
+    if (sum == 0.0f){
+        std::cout << softmaxed_output << std::endl;
+        throw std::invalid_argument("DIVISION BY 0");
+    }
     softmaxed_output = softmaxed_output / softmaxed_output.sum();
 }
 
@@ -172,10 +180,19 @@ void Network::compute_backpropagation(std::vector<float> y_true_vector){
     for (size_t l = 0; l < this->weights.size(); l++){
         for (size_t i = 0 ; i < this->weights[l].matrix_nb_row(); i++){
             for (size_t j = 0; j < this->weights[l].matrix_nb_col(); j++){
-                float a = (l == 0 ? input.my_matrix[i * input.matrix_nb_col() + j] : this->activated_layer[l - 1].my_matrix[i * this->activated_layer[l - 1].matrix_nb_col() + j]);
-                this->weights[l].my_matrix[i * this->weights[l].matrix_nb_col() + j] -= (a * nabla_layer[l].my_matrix[i]) * learning_rate;
+                float a = (l == 0 ? input.my_matrix[j] : this->activated_layer[l - 1].my_matrix[j]);
+                float grad = a * nabla_layer[l].my_matrix[i];
+                if (std::abs(grad) > 1.0f) grad = std::copysign(1.0f, grad);
+                this->weights[l].my_matrix[i * this->weights[l].matrix_nb_col() + j] -= grad * learning_rate;
             }
-            this->biais[l].my_matrix[i] -= (nabla_layer[l].my_matrix[i]) * learning_rate;
+            float db = nabla_layer[l].my_matrix[i];
+            if (std::abs(db) > 1.0f) db = std::copysign(1.0f, db);
+            this->biais[l].my_matrix[i] -= db * learning_rate;
         }
     }
+}
+
+
+int Network::get_predicted_value(){
+    return softmaxed_output.ind_max();
 }

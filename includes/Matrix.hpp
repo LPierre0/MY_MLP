@@ -21,10 +21,12 @@ class Matrix{
 
         Matrix operator+(const Matrix& matrix);
         Matrix operator-(Matrix const& matrix);
+        Matrix operator-(float const& value);
         Matrix operator/(const float& value);
         Matrix hadamard(const Matrix & matrix);
         Matrix map(float (*f)(float));
         Matrix transpose();
+        int ind_max();
 
 
 

@@ -12,6 +12,7 @@ class ImageLoader{
         ImageLoader(std::string filepath_images, std::string filepath_labels);
         std::vector<std::vector<uint8_t>> images;
         std::vector<uint8_t> labels;
+        int nb_images;
 
     private:
         void load_images();

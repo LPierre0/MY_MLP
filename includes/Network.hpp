@@ -19,7 +19,7 @@ class Network{
         void save(std::string file_path);
         void load(std::string file_path);
         void compute_backpropagation(std::vector<float> y_true_vector);
-
+        int get_predicted_value();
 
         Matrix get_softmaxed_output();
         
